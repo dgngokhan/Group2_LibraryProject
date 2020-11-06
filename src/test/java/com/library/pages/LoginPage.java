@@ -1,24 +1,33 @@
 package com.library.pages;
 
 
+import com.library.utils.ConfigurationReader;
 import com.library.utils.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class LoginPage {
+public class LoginPage extends  BasePage{
 
-    public LoginPage(){
-        PageFactory.initElements(Driver.getDriver(), this);
-    }
+
 
     @FindBy(id = "inputEmail")
-    public WebElement usernameInput;
+    private WebElement usernameInput;
 
     @FindBy(id = "inputPassword")
-    public WebElement passwordInput;
+    private WebElement passwordInput;
 
     @FindBy(xpath = "//button[.='Sign in']")
-    public WebElement signInButton;
+    private WebElement signInButton;
+
+
+
+    public void logIn(){
+        usernameInput.sendKeys(ConfigurationReader.getProperty("lib22_user"));
+        passwordInput.sendKeys(ConfigurationReader.getProperty("lib22_pass"));
+        signInButton.click();
+
+
+    }
 
 }
