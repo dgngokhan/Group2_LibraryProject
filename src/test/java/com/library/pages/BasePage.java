@@ -11,11 +11,14 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public abstract class BasePage {
 
+
+
     public BasePage(){
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
     public void navigateTo(String module) {
+
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 30);
         String moduleXpath = "//*[contains(text(),'"+module+"') and @class='title']";
 
